@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Autoryzacja{% endblock %}
+
+{% block body %}
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% for flash_msg in app.flashes('authentication') %}
+        <div class="alert alert-info" role="alert">{{ flash_msg }}</div>
+    {% endfor %}    
+
+    <form action="{{ path('app_login') }}" method="post" class="row g-3">
+        <fieldset class="col col-lg-6 mx-auto">
+            <label for="username" class="form-label">E-mail:</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control border bg-light">
+
+            <label for="password" class="form-label">Hasło:</label>
+            <input type="password" id="password" name="_password" class="form-control border bg-light">
+
+            {# If you want to control the URL the user is redirected to on success
+            <input type="hidden" name="_target_path" value="/lista" class="form-control"> #}
+
+            <button type="submit" class="btn btn-primary">Zaloguj</button>
+            <a href="{{ path('app_forgot_password_request') }}">Przypominj hasło</a>
+        </fieldset>
+    </form>
+{% endblock %}

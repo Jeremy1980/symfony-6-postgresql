@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Przywracanie hasła{% endblock %}
+
+{% block body %}
+    {{ form_start(resetForm, {'attr': {'class': 'row g-3'}}) }}
+        <fieldset class="col col-lg-6 mx-auto">    
+        {{ form_row(resetForm.plainPassword) }}
+        <button class="btn btn-primary">Zmień hasło</button>
+        </fieldset>
+    {{ form_end(resetForm) }}
+{% endblock %}

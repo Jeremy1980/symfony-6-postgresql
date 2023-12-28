@@ -1,0 +1,5 @@
+<p>Aby zresetować hasło, kliknij poniższy odnośnik</p>
+
+<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+
+<p>Ten odnośnik wygaśnie za {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>

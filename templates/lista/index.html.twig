@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista pobranych postów{% endblock %}
+
+{% block body %}
+    {% if warning %}
+        <div class="alert alert-warning">{{ warning }}</div>
+    {% endif %}
+
+    <table class="table table-striped caption-top">
+        <caption>
+            <a href="/logout" class="d-flex flex-row">
+                <button type="button" class="btn-close mx-2" aria-label="Close"></button>
+                <span>Zakończ</span>
+            </a>
+        </caption>
+        <thead>
+            <tr>
+                {% for field in fields %}
+                    <th scope="col">
+                        {{ field }}
+                    </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+                <tr>
+                    {% for cell in row %}
+                        <td scope="row">
+                            {{ cell }}
+                        </td>
+                    {% endfor %}
+                        <td scope="row">
+                            <a href="lista/usun/{{ row.id }}">Usuń</a>
+                        </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
